@@ -99,16 +99,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         protocol: TCP
         nodePort: 32000
 
-```sh
-  minikube service example-react-app --url
-```
-go to browser - okiok - http://192.168.64.3:32000
+  ```sh
+    minikube service example-react-app --url
+  ```
+  go to browser - okiok - http://192.168.64.3:32000
 
-TIPS: minikube run ports on the range of valid ports is 30000-32767
-but we can reassign that
-```
-  minikube start --extra-config=apiserver.service-node-port-range=3000-32767 --ports=127.0.0.1:3000-32767:3000-32767
-```
+  TIPS: minikube run ports on the range of valid ports is 30000-32767
+  but we can reassign that
+  ```
+    minikube start --extra-config=apiserver.service-node-port-range=3000-32767 --ports=127.0.0.1:3000-32767:3000-32767
+  ```
 
 ### CASE2:
   Deployment
