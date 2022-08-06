@@ -22,15 +22,24 @@ kubectl config set-context --current --namespace=react-docker
 
 http://your_minikube_ip:31000
   minikube ip
-
+```sh
   ✗ minikube tunnel
-  pass password
+```
+  passing password
 
-and should working in browser http://10.102.121.49/
+and should see in browser http://10.102.121.49/
 
 
-#### in minikube dashboard this sucess will lokkis like as ( first row :-) ) 
+#### in minikube dashboard this sucess will looks like as ( first row :-) ) 
 ![My Image](./ex/result_k8s0_load_balancer.png)
+
+
+#### 
+result of running
+```sh
+  kubectl get services -w
+```
+![My Image](./ex/result_kubectl_get_services.png)
 
 kubectl scale deployment react-docker --replicas=10
 kubectl get deployment -w
