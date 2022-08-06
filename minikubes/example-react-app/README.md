@@ -69,15 +69,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+```sh
+  ✗ docker build -t example-react-app .
+  ✗ docker images example-react-app
+  ✗ docker run -dit -p 3000:3000 example-react-app:latest
+  ✗ docker ps | grep example-react-app
 
-✗ docker build -t example-react-app .
-✗ docker images example-react-app
-✗ docker run -dit -p 3000:3000 example-react-app:latest
+  ✗ kubectl apply -f ./deployment.yaml
+  ✗ kubectl get pods
+  ✗ kubectl get services
+  ✗ kubectl get deployments
 
-✗ kubectl apply -f ./deployment.yaml
-✗ kubectl get pods
-
-✗ minikube service example-react-app --url
+  ✗ minikube service example-react-app --url
+```
 
 ### CASE1:
   Deployment
