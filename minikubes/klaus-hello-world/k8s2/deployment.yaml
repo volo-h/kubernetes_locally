@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: klaus-hello-world
+  labels:
+    app: klaus-hello-world
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: klaus-hello-world
+  template:
+    metadata:
+      labels:
+        app: klaus-hello-world
+    spec:
+      containers:
+      - name: klaus-hello-world
+        image: klaus-hello-world:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: KLAUS_PORT
+          value: "8080"

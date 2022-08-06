@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: klaus-hello-world-service
+spec:
+  selector:
+    app: klaus-hello-world
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
