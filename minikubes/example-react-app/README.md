@@ -74,6 +74,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   ✗ docker images example-react-app
   ✗ docker run -dit -p 3000:3000 example-react-app:latest
   ✗ docker ps | grep example-react-app
+  ✗ docker stop <CONTAINER_ID>
 
   ✗ kubectl apply -f ./deployment.yaml
   ✗ kubectl get pods
@@ -90,6 +91,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         containerPort: 80
 
   Service
+    name: example-react-app
     type: NodePort
     ports:
       - port: 80
@@ -97,6 +99,44 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         protocol: TCP
         nodePort: 32000
 
-  ✗ minikube service example-react-app --ur; go to browser - okiok - http://192.168.64.3:32000
+```sh
+  minikube service example-react-app --url
+```
+go to browser - okiok - http://192.168.64.3:32000
 
+TIPS: minikube run ports on the range of valid ports is 30000-32767
+but we can reassign that
+```
+  minikube start --extra-config=apiserver.service-node-port-range=3000-32767 --ports=127.0.0.1:3000-32767:3000-32767
+```
+
+### CASE2:
+  Deployment
+    containers:
+      ports:
+        containerPort: 80
+
+  Service
+    name: example-react-app
+    type: NodePort
+    ports:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        nodePort: 32000
+
+  Ingress
+    host: hello-world.info
+      name: example-react-app
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: example-react-app
+              port: 
+                number: 80
+
+  in browser
+    http://hello-world.info/ - okiok
+    http://192.168.64.3/ - failed!
 
