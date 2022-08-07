@@ -16,20 +16,25 @@ spec:
         - name: example-react-app
           image: example-react-app
           imagePullPolicy: Never
+          # resources:
+          #  #cpu and memory limit
+          #   limits:
+          #     memory: "550Mi"
+          #     cpu: "500m"
           ports:
-            - containerPort: 80
+            - containerPort: 80   # the port on which the app can be reached out inside the container
       restartPolicy: Always
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: example-react-app
+  name: example-react-app         # the Serivce name - it should match with the lable name of the deployment 
 spec:
-  type: NodePort
+  type: NodePort                  # type of the service
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 80                    # serve on port 80
+      targetPort: 80              # reach to port 8080 of all the Pods
       protocol: TCP
-      nodePort: 32000
+      nodePort: 32000             # use port 30000 as nodePort
   selector:
     app: example-react-app

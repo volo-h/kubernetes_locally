@@ -71,6 +71,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 #### some parts reused from 
 https://medium.com/geekculture/dockerizing-a-react-application-with-multi-stage-docker-build-4a5c6ca68166
++
+https://enlear.academy/deploy-a-react-application-in-kubernetes-69bd07e375ab
 
 ```sh
   ✗ docker build -t example-react-app .
