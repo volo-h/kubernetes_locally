@@ -20,6 +20,3 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 32001
-        # env:
-        # - name: KLAUS_PORT
-        #   value: "8080"
