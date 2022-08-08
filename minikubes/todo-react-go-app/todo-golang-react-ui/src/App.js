@@ -69,7 +69,7 @@ class App extends React.Component{
     this.state = {
       data: []
     }
-    this.apiUrl = 'http://192.168.64.3:32001/api/v1/todos/'
+    this.apiUrl = 'http://hello-world.info:32001/api/v1/todos/'
   }
   // Lifecycle method
   componentDidMount(){
