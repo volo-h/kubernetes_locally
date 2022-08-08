@@ -18,5 +18,8 @@ spec:
       - name: todo-golang-react-ui
         image: todo-golang-react-ui
         imagePullPolicy: Never
+        env:
+          - name: API_SERVER_HOST
+            value: "http://hello-world.info:32001"
         ports:
           - containerPort: 80

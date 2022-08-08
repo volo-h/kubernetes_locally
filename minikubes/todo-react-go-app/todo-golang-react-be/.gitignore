@@ -18,3 +18,5 @@ out/
 *.iws
 *.iml
 *.ipr
+
+.env

@@ -60,6 +60,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
   
 ```
 
+```sh
+  kubectl apply -f ui.deployment.yaml
+```
+
 minikube service list
 minikube service todo-golang-react-ui-service --url
 

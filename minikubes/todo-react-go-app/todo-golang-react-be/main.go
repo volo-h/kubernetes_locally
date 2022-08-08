@@ -2,15 +2,34 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+  "github.com/joho/godotenv"
 	// "github.com/jinzhu/gorm"
   // _ "github.com/jinzhu/gorm/dialects/mysql"
   "gorm.io/driver/mysql"
   "gorm.io/gorm"
 
+  "fmt"
+  "log"
+  "os"
 	"net/http"
 )
 
 func main() {
+  // var err error
+  _, err := os.Stat(".env")
+  if err == nil {
+    err := godotenv.Load()
+
+    if err != nil {
+      log.Fatalf("Error loading .env file")
+    }
+  }
+  // if err != nil {
+  //   log.Fatalf("Error getting env, %v", err)
+  // } else {
+  //   fmt.Println("We are getting values")
+  // }
+
 	//Migrate schema
 	db := Database()
 	db.AutoMigrate(&Todo{})
@@ -27,7 +46,9 @@ func main() {
 	 	v1.DELETE("/:id", DeleteTodo)
 	 }
 
-	router.Run(":32001")
+  apiPort := fmt.Sprintf(":%s", os.Getenv("API_SERVER_PORT"))
+
+  router.Run(apiPort)
 }
 
 type Todo struct {
@@ -59,10 +80,10 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 func Database() *gorm.DB {
-	// db, err := gorm.Open("sqlite3", "/tmp/todo.db")
+  // "root:password@tcp(127.0.0.1:3306)/demo"
+  DBURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"))
 
-  // db, err := gorm.Open(mysql.Open("root:password@tcp(mysql:3306)/demo"), &gorm.Config{})
-  db, err := gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/demo"), &gorm.Config{}) // local ony
+  db, err := gorm.Open(mysql.Open(DBURL), &gorm.Config{}) // local ony
 
 
 	if err != nil {

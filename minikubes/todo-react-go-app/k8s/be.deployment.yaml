@@ -18,5 +18,18 @@ spec:
       - name: todo-golang-react-be
         image: todo-golang-react-be
         imagePullPolicy: Never
+        env:
+          - name: API_SERVER_PORT
+            value: "32001"
+          - name: DB_USER
+            value: root
+          - name: DB_PASSWORD
+            value: password
+          - name: DB_HOST
+            value: mysql
+          - name: DB_PORT
+            value: "3306"
+          - name: DB_NAME
+            value: demo
         ports:
-        - containerPort: 32001
+          - containerPort: 32001
