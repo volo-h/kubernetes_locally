@@ -35,6 +35,6 @@ spec:
     - port: 80                    # serve on port 80
       targetPort: 80              # reach to port 8080 of all the Pods
       protocol: TCP
-      nodePort: 32000             # use port 30000 as nodePort
+      nodePort: 32000             # use port 32000 as nodePort
   selector:
     app: example-react-app
