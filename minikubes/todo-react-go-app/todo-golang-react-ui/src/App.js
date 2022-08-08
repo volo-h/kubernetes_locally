@@ -69,7 +69,13 @@ class App extends React.Component{
     this.state = {
       data: []
     }
-    this.apiUrl = 'http://hello-world.info:32001/api/v1/todos/'
+
+    // TODO: move to using .env file
+    if (process.env.NODE_ENV !== 'production') {
+      this.apiUrl = 'http://localhost:32001/api/v1/todos/';
+    } else {
+      this.apiUrl = 'http://hello-world.info:32001/api/v1/todos/';
+    } 
   }
   // Lifecycle method
   componentDidMount(){
