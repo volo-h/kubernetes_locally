@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-golang-react-ui
+  labels:
+    app: todo-golang-react-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-golang-react-ui
+  template:
+    metadata:
+      labels:
+        app: todo-golang-react-ui
+    spec:
+      containers:
+      - name: todo-golang-react-ui
+        image: todo-golang-react-ui
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 80
+        # env:
+        # - name: KLAUS_PORT
+        #   value: "8080"

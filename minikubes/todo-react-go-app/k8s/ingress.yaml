@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-world.info
+spec:
+  rules:
+   - host: hello-world.info
+     http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: todo-golang-react-ui-service
+                port: 
+                  number: 80
+          - pathType: Prefix
+            path: /api
+            backend:
+              service:
+                name: todo-golang-react-be-service
+                port: 
+                  number: 32001

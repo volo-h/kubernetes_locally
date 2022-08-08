@@ -2,9 +2,10 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
-	// _ "github.com/jinzhu/gorm/dialects/sqlite"	
-  _ "github.com/jinzhu/gorm/dialects/mysql"
+	// "github.com/jinzhu/gorm"
+  // _ "github.com/jinzhu/gorm/dialects/mysql"
+  "gorm.io/driver/mysql"
+  "gorm.io/gorm"
 
 	"net/http"
 )
@@ -26,7 +27,7 @@ func main() {
 	 	v1.DELETE("/:id", DeleteTodo)
 	 }
 
-	router.Run(":5001")
+	router.Run(":32001")
 }
 
 type Todo struct {
@@ -60,7 +61,9 @@ func CORSMiddleware() gin.HandlerFunc {
 func Database() *gorm.DB {
 	// db, err := gorm.Open("sqlite3", "/tmp/todo.db")
 
-  db, err := gorm.Open("mysql", "root:password@/demo?charset=utf8&parseTime=True&loc=Local")
+  // db, err := gorm.Open(mysql.Open("root:password@tcp(mysql:3306)/demo"), &gorm.Config{})
+  db, err := gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/demo"), &gorm.Config{}) // local ony
+
 
 	if err != nil {
 		panic("failed to connect database")
