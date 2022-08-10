@@ -56,3 +56,14 @@
   kubectl apply -f ./k8s/ingress.yaml
 
   minikube dashboard
+
+DEBT:
+1. ui env over env files for dev mode
+2. make for delete existing ks8 instructions, build images, apply yamls
+3. add helm
+4. add terraform to local minikube
+5. add linter's to ui project
+6. add swagger for endpoints
+7. add tests
+8. refactor go files
+9. implement clean architecture style
