@@ -95,3 +95,10 @@ echo -n "bm93LWdvLTItaG9tZQo=" | base64 -d
 
 #### base minimal k8s schema; created by https://excalidraw.com/
 ![My Image](ex/base_k8s.png)
+
+```sh
+  minikube addons list
+  
+  minikube addons enable ingress
+  minikube addons enable ingress ingress-dns
+```
